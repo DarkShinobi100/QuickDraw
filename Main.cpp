@@ -21,6 +21,17 @@ int main()
 	sf::Time timeSinceSignal = sf::seconds(0.0f);
 	sf::Clock gameClock; //game clock
 
+	//create button sprite
+	sf::Texture buttonTexture;
+	buttonTexture.loadFromFile("graphics/button.png");
+
+	sf::Sprite buttonSprite;
+	buttonSprite.setTexture(buttonTexture);
+
+	//center sprite in the middle of the screen, you have to realign it as the anchor point is the top left
+	buttonSprite.setPosition(gameWindow.getSize().x / 2 - buttonTexture.getSize().x / 2,
+		gameWindow.getSize().y / 2 - buttonTexture.getSize().y / 2);
+
 
 	//----------------------------------------------
 	//-----------end game setup--------------------
@@ -54,7 +65,8 @@ int main()
 	//----------------------------------------------
 	//------------------UPDATE=---------------------
 	//----------------------------------------------
-
+	//update time
+	sf::Time frameTime = gameClock.restart();
 
 	//----------------------------------------------
 	//-----------------end update--------------------
@@ -64,6 +76,9 @@ int main()
 	//------------------------------------------------
 	//-----------------draw---------------------------
 	//------------------------------------------------
+
+	// Draw everything
+	gameWindow.draw(buttonSprite);
 
 	//------------------------------------------------
 	//------------------end draw----------------------
