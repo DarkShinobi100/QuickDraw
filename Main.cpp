@@ -1,22 +1,72 @@
+//included libraries
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <string>
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	//-----------------------------------------------------------
+    //game setup
+    //--------------------------------------------------------------
+	//variables
+	sf::RenderWindow gameWindow; //Makes a variable called gameWindow of the type renderwindow
+	gameWindow.create(sf::VideoMode::getDesktopMode(), "Button Masher",
+	sf::Style::Titlebar | sf::Style::Close);
 
-	while (window.isOpen())
+	//Timer functionality
+	float signalTimeLowerLimit = 5.0f;
+	float signalTimerUpperLimit = 10.0f;
+
+	sf::Time timeTilsignal = sf::seconds(0.0f);
+	sf::Time timeSinceSignal = sf::seconds(0.0f);
+	sf::Clock gameClock; //game clock
+
+
+	//----------------------------------------------
+	//-----------end game setup--------------------
+	//---------------------------------------------
+
+
+
+	//----------------------------------------------
+    //Game loop
+    //----------------------------------------------
+    //Runs every frame untile the game is closed
+	while (gameWindow.isOpen()) // while continues to loop while the (condition) is true
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (gameWindow.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
 
+			//Process events
+
+			if (event.type == sf::Event::Closed)
+				gameWindow.close();
+		}
+		gameWindow.clear();
+		gameWindow.display();
+	}
+	//------------------------------------------------
+	//------------------end inputs--------------------
+	//------------------------------------------------
+
+
+	//----------------------------------------------
+	//------------------UPDATE=---------------------
+	//----------------------------------------------
+
+
+	//----------------------------------------------
+	//-----------------end update--------------------
+	//------------------------------------------------
+
+
+	//------------------------------------------------
+	//-----------------draw---------------------------
+	//------------------------------------------------
+
+	//------------------------------------------------
+	//------------------end draw----------------------
+	//-------------------------------------------------
 	return 0;
 }
